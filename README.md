@@ -1,130 +1,163 @@
-# MyStore - Next.js 15 E-commerce App
+# MyStore - Next.js E-commerce Application
 
-A modern e-commerce application built with Next.js 15, featuring authentication, product management, and a clean user interface.
+A modern e-commerce web application built with Next.js 15, featuring product management, user authentication, and a responsive design.
 
-## Features
+## 🚀 Features
 
-- **Landing Page** - Hero section, features, and product highlights
-- **Authentication** - NextAuth.js with Google OAuth and credential login
-- **Product Catalog** - Browse and search products
-- **Product Details** - Detailed product information pages
-- **Protected Dashboard** - Add new products (authenticated users only)
-- **Responsive Design** - Mobile-friendly interface with Tailwind CSS
+- **Product Catalog**: Browse and view detailed product information
+- **User Authentication**: Google OAuth and credentials-based login
+- **Product Management**: Add and manage products (authenticated users)
+- **Responsive Design**: Mobile-first design with Tailwind CSS
+- **Modern UI**: Clean interface with Lucide React icons
+- **Toast Notifications**: User feedback with react-hot-toast
 
-## Demo Credentials
+## 🛠️ Tech Stack
 
-For testing the credential login:
+- **Framework**: Next.js 15.5.0 with App Router
+- **Authentication**: NextAuth.js v5 (beta)
+- **Styling**: Tailwind CSS v4
+- **Icons**: Lucide React
+- **Notifications**: React Hot Toast
+- **Runtime**: React 19.1.0
 
-- **Email**: demo@example.com
-- **Password**: password
+## 📦 Setup & Installation
 
-## Getting Started
+### Prerequisites
 
-1. **Install dependencies**:
+- Node.js 18+
+- npm or yarn
+- Google OAuth credentials (for Google login)
+
+### 1. Clone the Repository
+
+```bash
+git clone <your-repo-url>
+cd my-app
+```
+
+### 2. Install Dependencies
 
 ```bash
 npm install
 ```
 
-2. **Set up environment variables**:
-   Copy `.env.local` and update the values:
+### 3. Environment Configuration
 
-```bash
+Create a `.env.local` file in the root directory:
+
+```env
+# NextAuth Configuration
 NEXTAUTH_URL=http://localhost:3000
 NEXTAUTH_SECRET=your-secret-key-here
 
-# Optional: For Google OAuth
+# Google OAuth (Get from Google Cloud Console)
 GOOGLE_CLIENT_ID=your-google-client-id
 GOOGLE_CLIENT_SECRET=your-google-client-secret
 ```
 
-3. **Run the development server**:
+### 4. Google OAuth Setup
+
+1. Go to [Google Cloud Console](https://console.cloud.google.com/)
+2. Create a new project or select existing one
+3. Enable Google+ API
+4. Create OAuth 2.0 credentials
+5. Add authorized redirect URIs:
+   - `http://localhost:3000/api/auth/callback/google` (development)
+   - `https://your-domain.com/api/auth/callback/google` (production)
+
+### 5. Run Development Server
 
 ```bash
 npm run dev
 ```
 
-4. **Open your browser**:
-   Navigate to [http://localhost:3000](http://localhost:3000)
+Visit [http://localhost:3000](http://localhost:3000) to see the application.
 
-## Project Structure
+### 6. Build for Production
 
-```
-src/
-├── app/
-│   ├── api/
-│   │   ├── auth/[...nextauth]/     # NextAuth API routes
-│   │   ├── products/               # Product API endpoints
-│   │   └── placeholder/            # Image placeholder generator
-│   ├── dashboard/
-│   │   └── add-product/            # Protected product creation page
-│   ├── login/                      # Authentication page
-│   ├── products/
-│   │   ├── [id]/                   # Dynamic product details page
-│   │   └── page.js                 # Product listing page
-│   ├── layout.js                   # Root layout with navigation
-│   └── page.js                     # Landing page
-├── components/
-│   ├── Navbar.js                   # Navigation component
-│   ├── Footer.js                   # Footer component
-│   └── ProductCard.js              # Product card component
-├── lib/
-│   ├── auth.js                     # NextAuth configuration
-│   └── products.js                 # Product data management
-└── middleware.js                   # Route protection middleware
+```bash
+npm run build
+npm start
 ```
 
-## Pages Overview
+## 🗺️ Route Summary
 
-### Public Pages
+### Public Routes
 
-- **/** - Landing page with hero, features, and product highlights
-- **/products** - Product catalog with search functionality
-- **/products/[id]** - Individual product details
-- **/login** - Authentication page
+| Route            | Description                                      |
+| ---------------- | ------------------------------------------------ |
+| `/`              | Homepage with hero section and featured products |
+| `/login`         | Authentication page (Google OAuth + credentials) |
+| `/products`      | Product catalog page                             |
+| `/products/[id]` | Individual product detail page                   |
 
-### Protected Pages
+### Protected Routes (Requires Authentication)
 
-- **/dashboard/add-product** - Add new products (requires authentication)
+| Route                    | Description                     |
+| ------------------------ | ------------------------------- |
+| `/dashboard/add-product` | Add new products to the catalog |
 
-## Technologies Used
+### API Routes
 
-- **Next.js 15** - React framework with App Router
-- **NextAuth.js** - Authentication library
-- **Tailwind CSS** - Utility-first CSS framework
-- **React Hot Toast** - Toast notifications
-- **Lucide React** - Icon library
+| Route                              | Method   | Description                          |
+| ---------------------------------- | -------- | ------------------------------------ |
+| `/api/auth/[...nextauth]`          | GET/POST | NextAuth.js authentication endpoints |
+| `/api/products`                    | GET      | Fetch all products                   |
+| `/api/products/[id]`               | GET      | Fetch specific product by ID         |
+| `/api/placeholder/[...dimensions]` | GET      | Generate placeholder images          |
 
-## Authentication
+## 🔐 Authentication
 
-The app supports two authentication methods:
+### Demo Credentials
 
-1. **Credential Login** - Simple email/password authentication
-2. **Google OAuth** - Social login (requires Google OAuth setup)
+- **Email**: `demo@example.com`
+- **Password**: `password`
 
-## API Routes
+### Google OAuth
 
-- `GET /api/products` - Fetch all products
-- `POST /api/products` - Create new product
-- `GET /api/products/[id]` - Fetch single product
-- `GET /api/placeholder/[width]/[height]` - Generate placeholder images
+Configure your Google OAuth credentials in the environment variables to enable Google login.
 
-## Development
+## 🎨 Components
 
-The application uses mock data stored in memory. In a production environment, you would replace this with a proper database solution.
+- **Navbar**: Navigation with authentication status
+- **Footer**: Site footer with links
+- **ProductCard**: Reusable product display component
 
-## Deployment
+## 📱 Responsive Design
 
-This app can be deployed on Vercel, Netlify, or any platform that supports Next.js applications.
+The application is fully responsive and optimized for:
 
-For Vercel deployment:
+- Mobile devices (320px+)
+- Tablets (768px+)
+- Desktop (1024px+)
+
+## 🚀 Deployment
+
+### Vercel (Recommended)
 
 1. Push your code to GitHub
 2. Connect your repository to Vercel
-3. Set up environment variables in Vercel dashboard
-4. Deploy!
+3. Add environment variables in Vercel dashboard
+4. Update `NEXTAUTH_URL` to your Vercel domain
+5. Update Google OAuth redirect URIs
 
-## License
+### Environment Variables for Production
 
-This project is open source and available under the MIT License.
-# Next-Auth
+```env
+NEXTAUTH_URL=https://your-vercel-domain.vercel.app
+NEXTAUTH_SECRET=your-production-secret
+GOOGLE_CLIENT_ID=your-google-client-id
+GOOGLE_CLIENT_SECRET=your-google-client-secret
+```
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Test thoroughly
+5. Submit a pull request
+
+## 📄 License
+
+This project is open source and available under the [MIT License](LICENSE).
