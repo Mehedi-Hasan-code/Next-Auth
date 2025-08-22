@@ -1,36 +1,130 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# MyStore - Next.js 15 E-commerce App
+
+A modern e-commerce application built with Next.js 15, featuring authentication, product management, and a clean user interface.
+
+## Features
+
+- **Landing Page** - Hero section, features, and product highlights
+- **Authentication** - NextAuth.js with Google OAuth and credential login
+- **Product Catalog** - Browse and search products
+- **Product Details** - Detailed product information pages
+- **Protected Dashboard** - Add new products (authenticated users only)
+- **Responsive Design** - Mobile-friendly interface with Tailwind CSS
+
+## Demo Credentials
+
+For testing the credential login:
+
+- **Email**: demo@example.com
+- **Password**: password
 
 ## Getting Started
 
-First, run the development server:
+1. **Install dependencies**:
+
+```bash
+npm install
+```
+
+2. **Set up environment variables**:
+   Copy `.env.local` and update the values:
+
+```bash
+NEXTAUTH_URL=http://localhost:3000
+NEXTAUTH_SECRET=your-secret-key-here
+
+# Optional: For Google OAuth
+GOOGLE_CLIENT_ID=your-google-client-id
+GOOGLE_CLIENT_SECRET=your-google-client-secret
+```
+
+3. **Run the development server**:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+4. **Open your browser**:
+   Navigate to [http://localhost:3000](http://localhost:3000)
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+src/
+├── app/
+│   ├── api/
+│   │   ├── auth/[...nextauth]/     # NextAuth API routes
+│   │   ├── products/               # Product API endpoints
+│   │   └── placeholder/            # Image placeholder generator
+│   ├── dashboard/
+│   │   └── add-product/            # Protected product creation page
+│   ├── login/                      # Authentication page
+│   ├── products/
+│   │   ├── [id]/                   # Dynamic product details page
+│   │   └── page.js                 # Product listing page
+│   ├── layout.js                   # Root layout with navigation
+│   └── page.js                     # Landing page
+├── components/
+│   ├── Navbar.js                   # Navigation component
+│   ├── Footer.js                   # Footer component
+│   └── ProductCard.js              # Product card component
+├── lib/
+│   ├── auth.js                     # NextAuth configuration
+│   └── products.js                 # Product data management
+└── middleware.js                   # Route protection middleware
+```
 
-## Learn More
+## Pages Overview
 
-To learn more about Next.js, take a look at the following resources:
+### Public Pages
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **/** - Landing page with hero, features, and product highlights
+- **/products** - Product catalog with search functionality
+- **/products/[id]** - Individual product details
+- **/login** - Authentication page
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Protected Pages
 
-## Deploy on Vercel
+- **/dashboard/add-product** - Add new products (requires authentication)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Technologies Used
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **Next.js 15** - React framework with App Router
+- **NextAuth.js** - Authentication library
+- **Tailwind CSS** - Utility-first CSS framework
+- **React Hot Toast** - Toast notifications
+- **Lucide React** - Icon library
+
+## Authentication
+
+The app supports two authentication methods:
+
+1. **Credential Login** - Simple email/password authentication
+2. **Google OAuth** - Social login (requires Google OAuth setup)
+
+## API Routes
+
+- `GET /api/products` - Fetch all products
+- `POST /api/products` - Create new product
+- `GET /api/products/[id]` - Fetch single product
+- `GET /api/placeholder/[width]/[height]` - Generate placeholder images
+
+## Development
+
+The application uses mock data stored in memory. In a production environment, you would replace this with a proper database solution.
+
+## Deployment
+
+This app can be deployed on Vercel, Netlify, or any platform that supports Next.js applications.
+
+For Vercel deployment:
+
+1. Push your code to GitHub
+2. Connect your repository to Vercel
+3. Set up environment variables in Vercel dashboard
+4. Deploy!
+
+## License
+
+This project is open source and available under the MIT License.
+# Next-Auth
