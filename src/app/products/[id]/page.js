@@ -45,11 +45,11 @@ export default function ProductDetailsPage() {
     return (
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="text-center">
-          <h1 className="text-2xl font-bold text-white mb-4">
+          <h1 className="text-2xl font-bold text- mb-4">
             Product Not Found
           </h1>
           <p className="text-gray-600 mb-8">
-            The product you're looking for doesn't exist.
+            The product you are looking for does not exist.
           </p>
           <Link
             href="/products"
@@ -90,7 +90,7 @@ export default function ProductDetailsPage() {
         {/* Product Info */}
         <div className="space-y-6">
           <div>
-            <h1 className="text-3xl font-bold text-white mb-4">
+            <h1 className="text-3xl font-bold text- mb-4">
               {product.name}
             </h1>
 
@@ -117,7 +117,7 @@ export default function ProductDetailsPage() {
 
           {/* Description */}
           <div>
-            <h3 className="text-lg font-semibold text-white mb-3">
+            <h3 className="text-lg font-semibold text- mb-3">
               Description
             </h3>
             <p className="text-gray-600 leading-relaxed">
@@ -127,7 +127,7 @@ export default function ProductDetailsPage() {
 
           {/* Features */}
           <div>
-            <h3 className="text-lg font-semibold text-white mb-3">
+            <h3 className="text-lg font-semibold text- mb-3">
               Features
             </h3>
             <ul className="space-y-2 text-gray-600">
@@ -171,19 +171,19 @@ export default function ProductDetailsPage() {
           <div className="border-t pt-6">
             <div className="grid grid-cols-2 gap-4 text-sm">
               <div>
-                <span className="font-medium text-white">SKU:</span>
+                <span className="font-medium text-">SKU:</span>
                 <span className="text-gray-600 ml-2">PRD-{product.id}</span>
               </div>
               <div>
-                <span className="font-medium text-white">Category:</span>
+                <span className="font-medium text-">Category:</span>
                 <span className="text-gray-600 ml-2">Electronics</span>
               </div>
               <div>
-                <span className="font-medium text-white">Availability:</span>
+                <span className="font-medium text-">Availability:</span>
                 <span className="text-green-600 ml-2">In Stock</span>
               </div>
               <div>
-                <span className="font-medium text-white">Shipping:</span>
+                <span className="font-medium text-">Shipping:</span>
                 <span className="text-gray-600 ml-2">2-3 days</span>
               </div>
             </div>
